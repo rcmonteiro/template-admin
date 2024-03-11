@@ -1,9 +1,13 @@
+'use client'
+
 import Layout from "@/components/templates/Layout"
 
 const page = () => {
   return (
-    <Layout title="teste" subtitle="testes...">
-      <h3>Qq coisa</h3>
+    <Layout title="Alerts" subtitle="Notificações e tal">
+      
+      <h3>Alerts...</h3>
+      
     </Layout>
   )
 }
