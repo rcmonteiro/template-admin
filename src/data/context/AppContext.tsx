@@ -1,8 +1,8 @@
 'use client'
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-type Theme = 'dark' | null
+type Theme = 'dark' | 'light'
 
 interface AppContextProps {
   theme: Theme
@@ -10,7 +10,7 @@ interface AppContextProps {
 }
 
 const AppContext = createContext<AppContextProps>({
-  theme: null
+  theme: 'dark'
 })
 
 export const AppProvider = ({children}:any) => {
@@ -18,8 +18,20 @@ export const AppProvider = ({children}:any) => {
   const [theme, setTheme] = useState<Theme>('dark')
 
   const toggleTheme = () => {
-    setTheme(theme ? null : 'dark')
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    localStorage.setItem('template-admin-theme',newTheme)
+    setTheme(newTheme)
   }
+
+  useEffect(() => {
+    let savedTheme: Theme = 'dark'
+    if (localStorage.getItem('template-admin-theme') === 'dark') {
+      savedTheme = 'dark'
+    } else {
+      savedTheme = 'light'
+    }
+    setTheme(savedTheme)
+  },[])
 
   return (
     <AppContext.Provider value={{

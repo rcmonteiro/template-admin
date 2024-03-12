@@ -4,8 +4,8 @@ import Layout from "@/components/templates/Layout"
 
 const Page = () => {
   return (
-    <Layout title="Settings" subtitle="Ajustes e tal">
-      <h3>Settings...</h3>
+    <Layout title="Profile" subtitle="Profile e tal">
+      <h3>Profile...</h3>
     </Layout>
   )
 }

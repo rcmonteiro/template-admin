@@ -18,7 +18,7 @@ const Layout = ({ title, subtitle, children = null }: LayoutProps) => {
     <div className={clsx(
         `flex h-screen w-screen`,
         {
-          'dark': cxt ? cxt.theme : null
+          'dark': cxt.theme === 'dark'
         }
       )}>
       <Sidebar/>

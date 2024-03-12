@@ -2,12 +2,12 @@ type Theme = 'dark' | null
 
 interface ToggleThemeProps {
   theme: Theme
-  toggleTheme: () => void
+  toggleTheme?: () => void
 }
 
 const ToggleTheme = ({ theme, toggleTheme }: ToggleThemeProps) => {
 
-  const isChecked = theme ? false : true
+  const isChecked = theme === 'dark' ? true : false
 
   return (
     <>

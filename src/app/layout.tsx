@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AppProvider } from "@/data/context/AppContext";
+import { AuthProvider } from "@/data/context/AuthContext";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "Template Admin",
@@ -15,9 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-poppins">
-        <AppProvider>
-          {children}
-        </AppProvider>
+        <Suspense fallback={<Loading/>}>
+          <AuthProvider>
+            <AppProvider>
+              {children}
+            </AppProvider>
+          </AuthProvider>
+        </Suspense>
       </body>
     </html>
   );
